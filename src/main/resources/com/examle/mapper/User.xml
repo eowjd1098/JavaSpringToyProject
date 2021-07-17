@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.examle.demoProject.dao.UserDao">
+
+    <select id="getUserList" resultType="com.examle.demoProject.user.dto.User">
+        SELECT OBJECT_ID AS object_id
+              ,OBJECT_NAME AS userId
+              ,ABBR_NAME AS userName
+              ,OBJ_RMK7 AS password
+              ,OBJ_RMK6 AS adrress
+              ,OBJ_RMK5 AS role
+              ,OBJ_RMK3 AS department
+              ,OBJ_RMK4 AS phone
+        FROM USER_OBJECT
+
+    </select>
+
+
+</mapper>

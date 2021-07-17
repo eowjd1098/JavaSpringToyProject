@@ -1,20 +1,16 @@
 package com.examle.demoProject;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.*;
-import org.springframework.context.annotation.*;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 
-@EnableAutoConfiguration(
-		exclude={DataSourceAutoConfiguration.class,
-		DataSourceTransactionManagerAutoConfiguration.class,
-		PersistenceExceptionTranslationAutoConfiguration.class
-		})
-@ImportResource("classpath:datasource-config.xml")
-@ComponentScan(basePackages = "org.our.freecommit")
-
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+		DataSourceAutoConfiguration.class, // datasource-config.xml
+		DataSourceTransactionManagerAutoConfiguration.class, // datasource-config.xml
+		PersistenceExceptionTranslationAutoConfiguration.class //conflict with mybatis proxy
+})
 public class DemoProjectApplication {
 
 	public static void main(String[] args) {
